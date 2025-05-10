@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Contenido - ArtWeekly</title>
+    <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <a href="home.html" class="logo">ArtWeekly</a>
+                <div class="nav-links">
+                    <a href="home.html">Inicio</a>
+                    <a href="#">Descubrir</a>
+                    <a href="#">Concurso Semanal</a>
+                    <a href="#">Ganadores</a>
+                </div>
+                <div class="spacer"></div>
+                <div>
+                    <a href="index.html" class="btn btn-outline">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="upload-container">
+            <div class="upload-header">
+                <h1>Enviar al Concurso Semanal</h1>
+                <a href="index.html" class="btn btn-outline">✕ Cancelar</a>
+            </div>
+            <div class="upload-content">
+                <div class="upload-left">
+                    <div class="upload-dropzone" id="dropzone" onclick="simulateFileUpload()">
+                        <div class="upload-icon">📤</div>
+                        <p class="dropzone-title">Arrastra y suelta tu imagen aquí</p>
+                        <p class="dropzone-subtitle">o haz clic para explorar</p>
+                        <p class="dropzone-formats">Soporta: JPG, PNG, GIF (Máx 10MB)</p>
+                    </div>
+                    <img src="/placeholder.svg" alt="Vista previa" class="upload-preview" id="preview">
+                    <div class="upload-info">
+                        <div class="theme-info">
+                            <span class="theme-icon">📷</span>
+                            <span>Tema de esta semana: Paisajes Urbanos</span>
+                        </div>
+                        <button class="btn btn-outline" id="change-image" onclick="resetUpload()">Cambiar Imagen</button>
+                    </div>
+                </div>
+                <div class="upload-right">
+                    <form>
+                        <div class="form-group">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" id="title" class="form-input" placeholder="Dale un título a tu envío">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description" class="form-label">Descripción</label>
+                            <textarea id="description" class="form-textarea" placeholder="Cuéntanos sobre tu trabajo..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category" class="form-label">Categoría</label>
+                            <select id="category" class="form-select">
+                                <option value="">Selecciona una categoría</option>
+                                <option value="photography">Fotografía</option>
+                                <option value="digital-art">Arte Digital</option>
+                                <option value="graphic-design">Diseño Gráfico</option>
+                                <option value="illustration">Ilustración</option>
+                                <option value="mixed-media">Medios Mixtos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tags" class="form-label">Etiquetas</label>
+                            <input type="text" id="tags" class="form-input" placeholder="Añade etiquetas separadas por comas">
+                            <p class="form-hint">Ejemplo: urbano, noche, arquitectura, calle</p>
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="contest" checked>
+                            <div>
+                                <label for="contest" class="checkbox-label">Enviar al concurso de esta semana</label>
+                                <p class="checkbox-description">Tu trabajo será elegible para votación en el concurso semanal actual</p>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <span class="info-icon">ℹ️</span>
+                            <div>
+                                <p class="info-text">
+                                    Al enviar tu trabajo, aceptas nuestras normas de la comunidad y confirmas que esta es tu creación original.
+                                </p>
+                                <a href="#" class="info-link">
+                                    Ver Normas de la Comunidad
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="upload-footer">
+                <a href="index.html" class="btn btn-outline">Cancelar</a>
+                <button class="btn btn-primary">Enviar al Concurso</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function simulateFileUpload() {
+            document.getElementById('dropzone').style.display = 'none';
+            document.getElementById('preview').src = 'https://via.placeholder.com/600x400?text=Tu+Imagen';
+            document.getElementById('preview').style.display = 'block';
+            document.getElementById('change-image').style.display = 'block';
+        }
+
+        function resetUpload() {
+            document.getElementById('dropzone').style.display = 'flex';
+            document.getElementById('preview').style.display = 'none';
+            document.getElementById('change-image').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

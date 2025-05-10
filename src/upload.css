@@ -1,0 +1,282 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: white;
+    padding: 15px 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #e60023;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #e60023;
+    color: white;
+    border: none;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.upload-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.upload-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.upload-content {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.upload-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.upload-right {
+    flex: 1;
+    min-width: 300px;
+}
+
+.upload-dropzone {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-dropzone:hover {
+    border-color: #e60023;
+    background-color: #f9f9f9;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.dropzone-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.dropzone-subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.dropzone-formats {
+    color: #999;
+    font-size: 12px;
+}
+
+.upload-preview {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: none;
+}
+
+.upload-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.theme-info {
+    display: flex;
+    align-items: center;
+    color: #777;
+    font-size: 14px;
+}
+
+.theme-icon {
+    margin-right: 5px;
+}
+
+#change-image {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+}
+
+.form-hint {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-checkbox input {
+    margin-top: 3px;
+}
+
+.checkbox-label {
+    font-weight: 500;
+}
+
+.checkbox-description {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
+
+.info-box {
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.info-icon {
+    color: #1890ff;
+    font-size: 18px;
+}
+
+.info-text {
+    margin: 0;
+    font-size: 14px;
+    color: #0c5460;
+}
+
+.info-link {
+    font-size: 14px;
+    color: #0c5460;
+    font-weight: 500;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.upload-footer {
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

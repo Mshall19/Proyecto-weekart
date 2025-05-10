@@ -26,7 +26,7 @@ header {
 }
 
 .logo {
-    color: #e60023;
+    color: #0058D4;
     font-weight: bold;
     font-size: 24px;
     text-decoration: none;
@@ -72,7 +72,7 @@ header {
 }
 
 .btn-primary {
-    background-color: #e60023;
+    background: linear-gradient(to left, #360062, #B200FF);
     color: white;
     border: none;
 }
@@ -193,7 +193,7 @@ header {
 }
 
 .badges-header a {
-    color: #e60023;
+    color: #0058D4;
     text-decoration: none;
     font-weight: 500;
 }
@@ -274,8 +274,8 @@ header {
 }
 
 .tab.active {
-    border-bottom-color: #e60023;
-    color: #e60023;
+    border-bottom-color: #B200FF;
+    color: #B200FF;
 }
 
 .grid {
@@ -358,7 +358,7 @@ header {
 }
 
 .vote-icon {
-    color: #e60023;
+    color: #360062
 }
 
 .vote-count {
@@ -440,7 +440,7 @@ header {
 }
 
 .footer-section h3 {
-    color: #e60023;
+    color: #0058D4;
     margin-bottom: 15px;
 }
 
