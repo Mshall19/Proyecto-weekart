@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorías - Busca</title>
+  <link rel="stylesheet" href="./categories.css">
+  <link rel="stylesheet" href="./components/navbar.css">
+  <link rel="stylesheet" href="./components/footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar (cargado con JavaScript) -->
+  <div id="navbar-container"></div>
+
+  <main>
+    <div class="container">
+      <div class="categories-header">
+        <h1 class="categories-title">Explora por categorías</h1>
+        <p class="categories-subtitle">Descubre contenido organizado por temas que te interesan</p>
+      </div>
+
+      <!-- Featured Categories -->
+      <section class="featured-categories">
+        <h2 class="section-title">Categorías destacadas</h2>
+        
+        <div class="featured-grid">
+          <div class="featured-card">
+            <div class="featured-image featured-image-1"></div>
+            <div class="featured-overlay">
+              <h3 class="featured-name">Aventuras</h3>
+              <p class="featured-count">1.2K publicaciones</p>
+            </div>
+          </div>
+          
+          <div class="featured-card">
+            <div class="featured-image featured-image-2"></div>
+            <div class="featured-overlay">
+              <h3 class="featured-name">Paisajes</h3>
+              <p class="featured-count">3.5K publicaciones</p>
+            </div>
+          </div>
+          
+          <div class="featured-card">
+            <div class="featured-image featured-image-3"></div>
+            <div class="featured-overlay">
+              <h3 class="featured-name">Ciudades</h3>
+              <p class="featured-count">2.8K publicaciones</p>
+            </div>
+          </div>
+          
+          <div class="featured-card">
+            <div class="featured-image featured-image-4"></div>
+            <div class="featured-overlay">
+              <h3 class="featured-name">Personas</h3>
+              <p class="featured-count">1.9K publicaciones</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- All Categories -->
+      <section class="all-categories">
+        <h2 class="section-title">Todas las categorías</h2>
+        
+        <div class="categories-filter">
+          <button class="filter-button active">Todas</button>
+          <button class="filter-button">Populares</button>
+          <button class="filter-button">Recientes</button>
+          <button class="filter-button">Tendencias</button>
+        </div>
+        
+        <div class="categories-grid">
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <h3 class="category-name">Arquitectura</h3>
+            <p class="category-count">1.5K publicaciones</p>
+          </div>
+          
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12h20"></path>
+                <path d="M2 12a10 10 0 0 1 20 0"></path>
+                <path d="M2 12a10 10 0 0 0 20 0"></path>
+                <path d="M12 2v20"></path>
+              </svg>
+            </div>
+            <h3 class="category-name">Viajes</h3>
+            <p class="category-count">2.3K publicaciones</p>
+          </div>
+          
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <h3 class="category-name">Gastronomía</h3>
+            <p class="category-count">980 publicaciones</p>
+          </div>
+          
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </div>
+            <h3 class="category-name">Moda</h3>
+            <p class="category-count">1.2K publicaciones</p>
+          </div>
+          
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="category-name">Lugares</h3>
+            <p class="category-count">1.7K publicaciones</p>
+          </div>
+          
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </div>
+            <h3 class="category-name">Fotografía</h3>
+            <p class="category-count">3.2K publicaciones</p>
+          </div>
+          
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </div>
+            <h3 class="category-name">Amor</h3>
+            <p class="category-count">950 publicaciones</p>
+          </div>
+          
+          <div class="category-item">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="category-name">Familia</h3>
+            <p class="category-count">1.1K publicaciones</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Tags -->
+      <section class="popular-tags">
+        <h2 class="section-title">Etiquetas populares</h2>
+        
+        <div class="tags-container">
+          <span class="tag">#aventura</span>
+          <span class="tag">#fotografia</span>
+          <span class="tag">#viajes</span>
+          <span class="tag">#naturaleza</span>
+          <span class="tag">#ciudad</span>
+          <span class="tag">#arquitectura</span>
+          <span class="tag">#comida</span>
+          <span class="tag">#arte</span>
+          <span class="tag">#moda</span>
+          <span class="tag">#tecnologia</span>
+          <span class="tag">#musica</span>
+          <span class="tag">#deporte</span>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer (cargado con JavaScript) -->
+  <div id="footer-container"></div>
+
+  <script>
+    // Cargar componentes
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cargar navbar
+      fetch('./components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        });
+      
+      // Cargar footer
+      fetch('./components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+        });
+      
+      // Funcionalidad de filtros
+      const filterButtons = document.querySelectorAll('.filter-button');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remover clase active de todos los botones
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Añadir clase active al botón clickeado
+          button.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
