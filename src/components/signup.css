@@ -1,0 +1,30 @@
+.signup-modal {
+  max-width: 450px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.terms-checkbox input {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  accent-color: var(--primary);
+}
+
+.terms-checkbox label {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.terms-checkbox a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
