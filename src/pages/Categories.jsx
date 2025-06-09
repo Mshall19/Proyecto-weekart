@@ -4,18 +4,18 @@ import "../categories.css"
 function Categories() {
   // Datos de ejemplo para las categorías
   const categories = [
-    { id: 1, name: "Paisajes", count: 1245, image: "/images/placeholder.jpg" },
-    { id: 2, name: "Retratos", count: 987, image: "/images/placeholder.jpg" },
-    { id: 3, name: "Naturaleza", count: 1532, image: "/images/placeholder.jpg" },
-    { id: 4, name: "Urbano", count: 756, image: "/images/placeholder.jpg" },
-    { id: 5, name: "Abstracto", count: 432, image: "/images/placeholder.jpg" },
-    { id: 6, name: "Minimalismo", count: 321, image: "/images/placeholder.jpg" },
-    { id: 7, name: "Arquitectura", count: 654, image: "/images/placeholder.jpg" },
-    { id: 8, name: "Viajes", count: 876, image: "/images/placeholder.jpg" },
-    { id: 9, name: "Comida", count: 543, image: "/images/placeholder.jpg" },
-    { id: 10, name: "Deportes", count: 432, image: "/images/placeholder.jpg" },
-    { id: 11, name: "Animales", count: 765, image: "/images/placeholder.jpg" },
-    { id: 12, name: "Macro", count: 321, image: "/images/placeholder.jpg" },
+    { id: 1, name: "Paisajes", count: 1245, image: "/src/assets/1c.jpg" },
+    { id: 2, name: "Retratos", count: 987, image: "/src/assets/2c.jpg" },
+    { id: 3, name: "Naturaleza", count: 1532, image: "/src/assets/3c.jpg" },
+    { id: 4, name: "Urbano", count: 756, image: "/src/assets/4c.jpg" },
+    { id: 5, name: "Abstracto", count: 432, image: "/src/assets/5c.png" },
+    { id: 6, name: "Minimalismo", count: 321, image: "/src/assets/6c.jpg" },
+    { id: 7, name: "Arquitectura", count: 654, image: "/src/assets/7c.jpg" },
+    { id: 8, name: "Viajes", count: 876, image: "/src/assets/8c.jpg" },
+    { id: 9, name: "Comida", count: 543, image: "/src/assets/9c.jpg" },
+    { id: 10, name: "Deportes", count: 432, image: "/src/assets/10c.jpg" },
+    { id: 11, name: "Animales", count: 765, image: "/src/assets/11c.jpg" },
+    { id: 12, name: "Macro", count: 321, image: "/src/assets/12c.jpg" },
   ]
 
   return (
