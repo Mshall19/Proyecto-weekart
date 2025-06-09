@@ -1,30 +1,52 @@
 import React, { useState } from 'react';
 import './signup.css';
 
-function Signup({ onClose, onLoginClick }) {
+function Signup({ onClose, onLoginClick , onRegister }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validación básica
     if (!name || !email || !password || !confirmPassword) {
-      setError('Por favor, completa todos los campos');
+      setError("Por favor, completa todos los campos");
       return;
     }
-    
     if (password !== confirmPassword) {
-      setError('Las contraseñas no coinciden');
+      setError("Las contraseñas no coinciden");
       return;
     }
-    
-    // Aquí iría la llamada a la API para registrar al usuario
-    // Por ahora, solo cerramos el modal
-    onClose();
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, password }),
+        }
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "Error en el registro");
+      }
+
+      const { token, user } = await response.json();
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // ENVIAR AL PADRE / GUARDAR
+      onRegister(user);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (

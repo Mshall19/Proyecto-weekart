@@ -1,34 +1,60 @@
 import "../profile.css"
+import { useState, useEffect } from "react";
+
 
 function Profile() {
+
+
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log("Usuario:", user);
+  console.log("nombre de usuario:", user?.username);
+
+  const [posts, setPosts] = useState([]);
+  
+    useEffect(() => {
+      const getData = async () => {
+        try {
+          const res = await fetch(`${import.meta.env.VITE_API_URL}/posts/`);
+          const data = await res.json();
+          setPosts(data);
+        } catch (error) {
+          setPosts([]); // O manejar error como prefieras
+        }
+      };
+      getData();
+    }, []); 
+
   return (
     <div className="profile-container">
       <div className="profile-header">
         <div className="profile-cover">
-          <img src="/images/placeholder.jpg" alt="Portada" className="cover-image" />
+          <img src="src/assets/profile_banner.png" alt="Portada" className="cover-image" />
         </div>
         <div className="profile-info">
           <div className="profile-avatar">
-            <img src="/images/placeholder.jpg" alt="Avatar" />
+            <img src="/src/assets/profile.png" alt="Avatar" />
           </div>
           <div className="profile-details">
-            <h1>Nombre de Usuario</h1>
+            <h1>{user?.username || "Nombre de Usuario"}</h1>
             <p className="profile-bio">
-              Fotógrafo aficionado | Amante de la naturaleza | Explorando el mundo a través de mi lente
+              {user?.description || "Esta es una breve descripción del usuario. Aquí puedes hablar sobre tus intereses, pasiones o cualquier cosa que quieras compartir con la comunidad."}
             </p>
             <div className="profile-stats">
               <div className="stat">
-                <span className="stat-value">125</span>
+                <span className="stat-value"> {posts.length}</span>
                 <span className="stat-label">Publicaciones</span>
               </div>
+            {/*}
               <div className="stat">
                 <span className="stat-value">1.5k</span>
                 <span className="stat-label">Seguidores</span>
               </div>
+         
               <div className="stat">
                 <span className="stat-value">300</span>
                 <span className="stat-label">Siguiendo</span>
-              </div>
+              </div> */}
             </div>
           </div>
           <button className="btn btn-primary edit-profile-btn">Editar perfil</button>
@@ -43,9 +69,9 @@ function Profile() {
 
       <div className="profile-content">
         <div className="photos-grid">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-            <div key={item} className="photo-item">
-              <img src="/images/placeholder.jpg" alt={`Foto ${item}`} />
+          {posts.map((item) => (
+            <div key={item.id} className="photo-item">
+              <img src={item.image_url} alt={`Foto ${item.id}`} />
               <div className="photo-overlay">
                 <div className="photo-stats">
                   <span>
@@ -55,7 +81,7 @@ function Profile() {
                         fill="white"
                       />
                     </svg>
-                    45
+                    {item.votes}
                   </span>
                   <span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +90,7 @@ function Profile() {
                         fill="white"
                       />
                     </svg>
-                    12
+                    {item.comments}
                   </span>
                 </div>
               </div>
