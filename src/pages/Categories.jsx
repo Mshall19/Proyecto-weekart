@@ -56,7 +56,7 @@ function Categories() {
         <div className="featured-categories">
           <div className="featured-category">
             <div className="featured-image">
-              <img src="/images/placeholder.jpg" alt="Categoría destacada" />
+              <img src="/src/assets/13c.jpg" alt="Categoría destacada" />
               <div className="featured-overlay">
                 <h3>Fotografía nocturna</h3>
                 <p>Explora la belleza de la noche a través de estas increíbles fotografías</p>

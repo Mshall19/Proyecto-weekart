@@ -21,10 +21,10 @@ function Home() {
 
   // Datos de ejemplo para las categorías
   const categories = [
-    { id: 1, name: "Animales", image: "/images/placeholder.jpg" },
-    { id: 2, name: "Paisajes", image: "/images/placeholder.jpg" },
-    { id: 3, name: "Retratos", image: "/images/placeholder.jpg" },
-    { id: 4, name: "Ciudades", image: "/images/placeholder.jpg" },
+    { id: 9, name: "Comida", count: 543, image: "/src/assets/9c.jpg" },
+    { id: 2, name: "Retratos", count: 987, image: "/src/assets/2c.jpg" },
+    { id: 6, name: "Minimalismo", count: 321, image: "/src/assets/6c.jpg" },
+    { id: 4, name: "Urbano", count: 756, image: "/src/assets/4c.jpg" },
   ];
 
   // Datos de ejemplo para los perfiles destacados
@@ -134,22 +134,54 @@ function Home() {
         </div>
         <div className="categories-grid">
           {categories.map((category) => (
-            <Link
-              to={`/category/${category.id}`}
-              key={category.id}
-              className="category-card"
-            >
-              <div className="category-image">
-                <img
-                  src={category.image || "/placeholder.svg"}
-                  alt={category.name}
-                />
+            <Link to={`/category/${category.id}`} key={category.id} className="category-card">
+            <div className="category-image">
+              <img src={category.image || "/placeholder.svg"} alt={category.name} />
+              <div className="category-overlay">
+                <h3>{category.name}</h3>
+                <span>{category.count} fotos</span>
               </div>
-              <h3>{category.name}</h3>
-            </Link>
+            </div>
+          </Link>
           ))}
         </div>
       </section>
+
+      {/* Weekly Winner Section */}
+      <section className="winner-section">
+        <div className="section-header">
+          <h2 className="section-title">Ganador de la semana pasada</h2>
+        </div>
+        <div className="posts-grid">
+          <div className="post-card winner-post-card">
+            <div className="post-image">
+              <img src="/images/placeholder.jpg" alt="Sueños de Neón" />
+            </div>
+            <div className="post-info">
+              <h3>Sueños de Neón</h3>
+              <p>Por Jane Doe</p>
+              <p>
+                Una impresionante captura de la vida nocturna de Tokio, mezclando
+                elementos tradicionales con estética de neón moderna.
+              </p>
+              <div className="post-stats">
+                <div className="stat">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"
+                      fill="#333"
+                    />
+                  </svg>
+                  <span>243</span>
+                  <Link to="/profile" className="mobile-link">ver Perfil</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Featured Profiles Section */}
       <section className="profiles-section">
@@ -168,7 +200,10 @@ function Home() {
               <div className="profile-info">
                 <h3>{profile.name}</h3>
                 <p>{profile.followers} seguidores</p>
+                <Link to="/profile" className="mobile-link">ver Perfil</Link>
                 <button className="btn btn-outline">Seguir</button>
+                
+                
               </div>
             </div>
           ))}

@@ -242,3 +242,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Winner Section */
+.winner-section {
+  background-color: #49048a;
+  color: white;
+  padding: 40px 20px;
+  border-radius: var(--border-radius);
+}
+
+.winner-section .section-title {
+  color: white;
+}
+
+/* Opcional: para dar estilo diferente al card del ganador */
+.winner-post-card {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  color: black;
+}
