@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 function Home() {
   // Datos de ejemplo para las publicaciones
+  /*
    const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -18,7 +19,43 @@ function Home() {
     };
     getData();
   }, []);
+  */
 
+  //aca modificas los datos de los post simulados
+  const posts = [
+    {
+      id: 1,
+      title: "Atardecer en la Playa",
+      username: "user1",
+      image_url: "https://images.pexels.com/photos/11311708/pexels-photo-11311708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      votes: 120,
+      comments: 45,
+    },
+    {
+      id: 2,
+      title: "Montañas Nevadas",
+      username: "user2",
+      image_url: "src/assets/2f.jpg",
+      votes: 200,
+      comments: 30,
+    },
+    {
+      id: 3,
+      title: "Ciudad Nocturna",
+      username: "user3",
+      image_url: "src/assets/3f.jpg",
+      votes: 150,
+      comments: 60,
+    },
+    {
+      id: 4,
+      title: "Bosque Encantado",
+      username: "user4",
+      image_url: "src/assets/4f.jpg",
+      votes: 180,
+      comments: 50,
+    },
+  ];  
   // Datos de ejemplo para las categorías
   const categories = [
     { id: 9, name: "Comida", count: 543, image: "/src/assets/9c.jpg" },
@@ -29,10 +66,11 @@ function Home() {
 
   // Datos de ejemplo para los perfiles destacados
   const featuredProfiles = [
-    { id: 1, name: "María López", followers: 1200 },
-    { id: 2, name: "Juan Pérez", followers: 980 },
-    { id: 3, name: "Elena Rodríguez", followers: 1500 },
-    { id: 4, name: "David García", followers: 850 },
+    { id: 1, name: "María López", followers: 1200, image_url: "/src/assets/1p.png" },
+    { id: 2, name: "Juan Pérez", followers: 980, image_url: "/src/assets/2p.jpg" },
+    { id: 3, name: "Elena Rodríguez", followers: 1500, image_url: "/src/assets/3p.jpg" },
+    { id: 4, name: "David García", followers: 850, image_url: "/src/assets/4p.jpg" },
+
   ];
 
   return (
@@ -61,10 +99,7 @@ function Home() {
             tu visión de la ciudad.
           </p>
           <div className="challenge-info">
-            <span>3 días 14 horas</span>
-            <Link to="/challenge" className="btn btn-primary">
-              Subir mi trabajo
-            </Link>
+            <span>3 días 14 horas</span>images/placeholder.jpg
           </div>
         </div>
       </section>
@@ -81,7 +116,7 @@ function Home() {
           {posts.map((post) => (
             <div key={post.id} className="post-card card">
               <div className="post-image">
-                <img src={post.image_url || "/images/placeholder.jpg"} alt={post.title} />
+                <img src={post.image_url || "/src/assets/1f.jpg"} alt={post.title} />
               </div>
               <div className="post-info">
                 <h3>{post.title}</h3>
@@ -155,7 +190,7 @@ function Home() {
         <div className="posts-grid">
           <div className="post-card winner-post-card">
             <div className="post-image">
-              <img src="/images/placeholder.jpg" alt="Sueños de Neón" />
+              <img src="/src/assets/1f.jpg" alt="Sueños de Neón" />
             </div>
             <div className="post-info">
               <h3>Sueños de Neón</h3>
@@ -195,7 +230,7 @@ function Home() {
           {featuredProfiles.map((profile) => (
             <div key={profile.id} className="profile-card card">
               <div className="profile-image">
-                <img src="/images/placeholder.jpg" alt={profile.name} />
+                <img src={profile.image_url} alt={profile.name} />
               </div>
               <div className="profile-info">
                 <h3>{profile.name}</h3>

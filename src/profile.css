@@ -199,3 +199,13 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
+
+.profile-content-with-bg {
+  background-color: #D9D9D9;
+  /* background-image: url('/src/assets/bgp2.jpg');  <-- quitar o comentar */
+  padding: 40px 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 40px;
+}
+

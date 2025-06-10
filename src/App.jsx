@@ -20,9 +20,15 @@ function App() {
   const [showSignup, setShowSignup] = useState(false);
 
   const handleLogin = () => {
+
+    console.log("Login successful");
     setIsLoggedIn(true);
     setShowLogin(false);
   };
+
+  // Removed duplicate declaration of isLoggedIn
+
+
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -42,10 +48,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={
-              isLoggedIn ? <Profile /> : <Navigate to="/" />
+              /*isLoggedIn ?*/ <Profile /> /* : <Navigate to="/"  />*/
             } />
             <Route path="/upload" element={
-              isLoggedIn ? <Upload /> : <Navigate to="/" />
+              /*isLoggedIn ?*/ <Upload /> /*: <Navigate to="/" />*/
             } />
             <Route path="/categories" element={<Categories />} />
           </Routes>
