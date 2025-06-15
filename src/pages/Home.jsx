@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import "../home.css";
+import "./home.css";
 import { useState, useEffect } from "react";
 
 function Home() {
-  // Datos de ejemplo para las publicaciones
-   const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -13,18 +13,72 @@ function Home() {
         const data = await res.json();
         setPosts(data);
       } catch (error) {
-        setPosts([]); // O manejar error como prefieras
+        setPosts([]);
       }
     };
     getData();
+
+    // Obtener usuario autenticado
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) setUser(JSON.parse(storedUser));
   }, []);
 
+  // Manejar like/unlike
+  const handleLike = async (post) => {
+    if (!user) return; // Solo usuarios autenticados
+
+    // ¿El usuario ya votó este post?
+    const alreadyLiked = post.votes_users?.includes(user.id);
+
+    if (alreadyLiked) {
+      // DELETE voto
+      await fetch(
+        `${import.meta.env.VITE_API_URL}/votes/${user.id}/${post.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      // Actualizar estado local
+      setPosts((prev) =>
+        prev.map((p) =>
+          p.id === post.id
+            ? {
+                ...p,
+                votes: p.votes - 1,
+                votes_users: p.votes_users.filter((uid) => uid !== user.id),
+              }
+            : p
+        )
+      );
+    } else {
+      // POST voto
+      await fetch(`${import.meta.env.VITE_API_URL}/votes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: user.id, post_id: post.id }),
+      });
+      console.log("Voto enviado:", { user_id: user.id, post_id: post.id });
+      // Actualizar estado local
+      setPosts((prev) =>
+        prev.map((p) =>
+          p.id === post.id
+            ? {
+                ...p,
+                votes: p.votes + 1,
+                votes_users: [...(p.votes_users || []), user.id],
+              }
+            : p
+        )
+      );
+    }
+  };
+
   // Datos de ejemplo para las categorías
-  const categories = [
-    { id: 1, name: "Animales", image: "/images/placeholder.jpg" },
-    { id: 2, name: "Paisajes", image: "/images/placeholder.jpg" },
-    { id: 3, name: "Retratos", image: "/images/placeholder.jpg" },
-    { id: 4, name: "Ciudades", image: "/images/placeholder.jpg" },
+ const categories = [
+    { id: 9, name: "Comida", count: 543, image: "../src/assets/categories/9c.jpg" },
+    { id: 2, name: "Retratos", count: 987, image: "../src/assets/categories/2c.jpg" },
+    { id: 6, name: "Minimalismo", count: 321, image: "../src/assets/categories/6c.jpg" },
+    { id: 4, name: "Urbano", count: 756, image: "../src/assets/categories/4c.jpg" },
   ];
 
   // Datos de ejemplo para los perfiles destacados
@@ -78,49 +132,78 @@ function Home() {
           </Link>
         </div>
         <div className="posts-grid">
-          {posts.map((post) => (
-            <div key={post.id} className="post-card card">
-              <div className="post-image">
-                <img src={post.image_url || "/images/placeholder.jpg"} alt={post.title} />
-              </div>
-              <div className="post-info">
-                <h3>{post.title}</h3>
-                <p>Por {post.username}</p>
-                <div className="post-stats">
-                  <div className="stat">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"
-                        fill="#333333"
-                      />
-                    </svg>
-                    <span>{post.votes}</span>
-                  </div>
-                  <div className="stat">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
-                        fill="#333333"
-                      />
-                    </svg>
-                    <span>{post.comments}</span>
+          {posts.map((post) => {
+            // Asegúrate de que votes_users sea un array de IDs de usuarios que han votado este post
+            const liked = user && post.votes_users?.includes(user.id);
+            return (
+              <div key={post.id} className="post-card card">
+                <div className="post-image">
+                  <Link to={`/post/${post.id}`}>
+                    <img
+                      src={post.image_url || "/images/placeholder.jpg"}
+                      alt={post.title}
+                    />
+                  </Link>
+                </div>
+                <div className="post-info">
+                  <h3>{post.title}</h3>
+                  <p>Por {post.username}</p>
+                  <div className="post-stats">
+                    <div className="stat">
+                      <button
+                        className={`like-btn${liked ? " liked" : ""}`}
+                        onClick={() => handleLike(post)}
+                        disabled={!user}
+                        title={
+                          user
+                            ? liked
+                              ? "Quitar voto"
+                              : "Dar voto"
+                            : "Inicia sesión para votar"
+                        }
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: user ? "pointer" : "not-allowed",
+                          padding: 0,
+                          marginRight: "6px",
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill={liked ? "#e74c3c" : "none"}
+                          stroke="#e74c3c"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                      </button>
+                      <span>{post.votes}</span>
+                    </div>
+                    <div className="stat">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"
+                          fill="#333333"
+                        />
+                      </svg>
+                      <span>{post.comments}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -163,12 +246,12 @@ function Home() {
           {featuredProfiles.map((profile) => (
             <div key={profile.id} className="profile-card card">
               <div className="profile-image">
-                <img src="/images/placeholder.jpg" alt={profile.name} />
+                <img src="../src/assets/default-profile.png" alt={profile.name} />
               </div>
               <div className="profile-info">
                 <h3>{profile.name}</h3>
-                <p>{profile.followers} seguidores</p>
-                <button className="btn btn-outline">Seguir</button>
+                <p>{profile.followers} Likes</p>
+                <button className="btn btn-outline">Ver Perfil</button>
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import "../categories.css"
+import "./categories.css"
 
 function Categories() {
   // Datos de ejemplo para las categorías

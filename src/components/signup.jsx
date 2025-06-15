@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './signup.css';
 
 function Signup({ onClose, onLoginClick , onRegister }) {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -12,7 +12,7 @@ function Signup({ onClose, onLoginClick , onRegister }) {
     e.preventDefault();
 
     // Validación básica
-    if (!name || !email || !password || !confirmPassword) {
+    if (!username || !email || !password || !confirmPassword) {
       setError("Por favor, completa todos los campos");
       return;
     }
@@ -29,7 +29,7 @@ function Signup({ onClose, onLoginClick , onRegister }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email, password }),
+          body: JSON.stringify({ username, email, password }),
         }
       );
 
@@ -72,8 +72,8 @@ function Signup({ onClose, onLoginClick , onRegister }) {
                   id="name" 
                   className="form-control" 
                   placeholder="Tu nombre" 
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required 
                 />
               </div>

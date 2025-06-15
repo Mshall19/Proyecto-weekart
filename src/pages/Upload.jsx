@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import "../upload.css";
+import "./upload.css";
 
 function Upload() {
   const [events, setEvents] = useState([]);

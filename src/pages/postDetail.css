@@ -1,0 +1,19 @@
+.post-card:hover .post-image img {
+    transform: none;
+}
+
+
+.post-card .post-image{
+    background: linear-gradient(35deg, #cc96ff 0%, #8859f7 50%, #972eb7 100%);
+    padding: 0!important;
+}
+.post-card .post-image img{
+    margin: 0;
+    display: block;
+    padding: 0;
+}
+
+
+.post-image:hover img {
+    transform: scale(1.05);
+}

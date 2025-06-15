@@ -13,6 +13,8 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Upload from './pages/Upload';
 import Categories from './pages/Categories';
+import PostDetail from './pages/PostDetail';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,6 +50,8 @@ function App() {
               isLoggedIn ? <Upload /> : <Navigate to="/" />
             } />
             <Route path="/categories" element={<Categories />} />
+            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/post/:id" element={<PostDetail />} />
           </Routes>
         </main>
         
@@ -67,6 +71,7 @@ function App() {
         {showSignup && (
           <Signup 
             onClose={() => setShowSignup(false)}
+            onRegister={handleLogin}
             onLoginClick={() => {
               setShowSignup(false);
               setShowLogin(true);
